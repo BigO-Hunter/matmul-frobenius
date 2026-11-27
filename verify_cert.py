@@ -2,8 +2,9 @@
 """Clean-room verifier for CERT_17_16.json: re-derives everything from (p, r, lambda,
 Z0, alpha, beta, gamma) and asserts every stored claim. Exit 1 on any failure."""
 import json, sys
+from pathlib import Path
 
-cert = json.load(open("/Volumes/Substrate-1/bigo/matmul-frobenius/CERT_17_16.json"))
+cert = json.load(open(Path(__file__).resolve().parent / "CERT_17_16.json"))
 P, LAM, R = cert["p"], cert["lambda"], cert["r"]
 assert pow(LAM, 8, P) == P - 1 and pow(LAM, 16, P) == 1
 
