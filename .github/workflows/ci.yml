@@ -1,0 +1,22 @@
+name: Certificate check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Clean-room certificate verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the certificate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # No Lean package in this repo: the artifact is the (17,16) design
+      # certificate CERT_17_16.json plus a stdlib-only clean-room verifier.
+      - name: Re-derive every stored claim from the design parameters
+        run: python3 verify_cert.py
