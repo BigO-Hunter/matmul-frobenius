@@ -7,13 +7,14 @@ Design: Z0 = (S1 x {k1}) U (S2 x {k2}). Survivor block (kg,kh) iff kg,kh,(kg+kh)
 block count N(A,B,C; mu) = #{(a,b) in A x B : a + lam^kg * b in C}  (all mod 17).
 """
 import itertools, json, random
+from pathlib import Path
 import numpy as np
 
 P, LAM, R, BUDGET, TARGET_SUPPORT = 17, 3, 16, 511, 16 ** 3
 assert pow(LAM, 8, P) == P - 1 and pow(LAM, 16, P) == 1
 assert all(pow(LAM, d, P) != 1 for d in range(1, 16)), "ord(3) mod 17 = 16 required"
 LAMPOW = [pow(LAM, k, P) for k in range(R)]
-OUT = "/Volumes/Substrate-1/bigo/matmul-frobenius/RESULTS_enum_17_16.json"
+OUT = str(Path(__file__).resolve().parent / "RESULTS_enum_17_16.json")
 
 # ---------- structural theorem over the C(16,2)=120 K-pairs (checked) ----------
 KPAIRS = list(itertools.combinations(range(R), 2))

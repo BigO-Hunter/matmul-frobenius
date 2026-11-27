@@ -2,6 +2,7 @@
 """Build CERT_17_16.json: the passing design's certificate skeleton (data + checked
 assertions), from RESULTS_enum_17_16.json. Exact integers."""
 import json
+from pathlib import Path
 
 P, LAM, R = 17, 3, 16
 K = (1, 2)
@@ -9,7 +10,7 @@ S1 = frozenset(range(P))          # slice k=1: full kernel
 S2 = frozenset(range(P))          # slice k=2: full kernel
 Z0 = [(a, 1) for a in range(P)] + [(a, 2) for a in range(P)]
 
-res = json.load(open("/Volumes/Substrate-1/bigo/matmul-frobenius/RESULTS_enum_17_16.json"))
+res = json.load(open(Path(__file__).resolve().parent / "RESULTS_enum_17_16.json"))
 best = res["best_design"]
 assert best["K"] == [1, 2] and best["coverage"] == 256
 alpha_list, beta_list = best["alpha"], best["beta"]
@@ -77,6 +78,6 @@ cert = {
             "provides no compression mechanism beyond the indicator class.",
     },
 }
-with open("/Volumes/Substrate-1/bigo/matmul-frobenius/CERT_17_16.json", "w") as f:
+with open(Path(__file__).resolve().parent / "CERT_17_16.json", "w") as f:
     json.dump(cert, f, indent=1)
 print("CERT_17_16.json written")

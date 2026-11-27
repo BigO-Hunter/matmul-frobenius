@@ -1,8 +1,13 @@
 # matmul-frobenius
 
-Frobenius group-algebra lane toward M16 border certificates (ω < 9/4) on the BigO Speedrun matmul board: screens, potentials, the (17,16) enumeration, and certificate forensics.
-Construction: ours. AI-assisted (darkhipo swarm), disclosed.
-Status: research shelf — screens and enumeration; forensics tooling for third-party certificates. The (17,16) indicator-class lane has a recorded **closure verdict** (see below).
+> **RACE CLOSED.** OpenAI proved **ω = 9/4 exactly** — an O(n^{9/4+ε}) upper bound with a
+> matching lower bound (preprint Nov 24 2026; [board race page](https://bigospeedrun.com) reads
+> "Race closed! (Lean Verified)"). This lane's target (ω < 9/4) is **settled and refuted**.
+> Preserved read-only as a verified baseline and certificate-forensics reference.
+
+Frobenius group-algebra lane toward M16 border certificates on the BigO Speedrun matmul board: screens, potentials, the (17,16) enumeration, and certificate forensics.
+Construction: ours. AI-assisted; disclosed.
+Status: archived (race closed). The (17,16) indicator-class lane independently reached a **closure verdict** (see below) before the race was settled externally.
 
 ---
 
@@ -33,7 +38,10 @@ python3 build_cert.py      # rebuild CERT_17_16.json from the enumeration result
 
 ## What work can be done here
 
-Open work: M16 border certificate construction from the (17,16) enumeration; an ω < 9/4 landing; certificate forensics for third-party submissions continues.
+The race is closed (ω = 9/4 is optimal), so no further bound-hunting is warranted. What remains
+useful: the clean-room `verify_cert.py` and the certificate-forensics tooling can audit
+third-party matmul certificates; the (17,16) enumeration is a reproducible exact reference. The
+classical open border-rank(⟨16,16,16⟩) ≤ 511 question survives independently of the ω race.
 
 ## License
 
